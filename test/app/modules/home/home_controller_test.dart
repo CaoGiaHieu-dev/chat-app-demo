@@ -1,8 +1,6 @@
+import 'package:chat_app/app/modules/home/home_module.dart';
 import 'package:flutter_modular/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:chat_app/chat_app/app/modules/home/home_controller.dart';
-import 'package:chat_app/chat_app/app/modules/home/home_module.dart';
 
 void main() {
   initModule(HomeModule());

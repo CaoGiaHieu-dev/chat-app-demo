@@ -14,13 +14,30 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   //use 'controller' variable to access controller
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+  Widget build(BuildContext context) 
+  {
+    return Scaffold
+    (
+      appBar: AppBar
+      (
         title: Text(widget.title),
       ),
-      body: Column(
-        children: <Widget>[],
+      body: Column
+      (
+        children: <Widget>
+        [
+          MaterialButton
+          (
+            onPressed: () 
+            {
+              Modular.to.pushNamed("/chat");
+            },
+            child: Text
+            (
+              "Start Chat"
+            ),
+          )
+        ],
       ),
     );
   }
