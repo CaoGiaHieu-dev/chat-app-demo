@@ -1,0 +1,4 @@
+const String APP_ID = "F70B0504-DF23-F4A4-FFD0-7CB24B0DED00";
+const String ANDROID_KEY = "6D5DBFC8-D962-427F-95DF-DDAEC6A22336";
+const String IOS_KEY = "7A41391E-50F3-4D05-8755-CDD597A333B9";
+const String SERVER_URL = "https://api.backendless.com";

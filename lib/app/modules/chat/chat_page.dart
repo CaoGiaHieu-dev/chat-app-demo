@@ -1,5 +1,8 @@
+import 'package:chat_app/app/modules/chat/typing/typing_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
 import 'chat_controller.dart';
 
 class ChatPage extends StatefulWidget {
@@ -14,13 +17,52 @@ class _ChatPageState extends ModularState<ChatPage, ChatController> {
   //use 'controller' variable to access controller
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+  Widget build(BuildContext context) 
+  {
+    return Scaffold
+    (
+      appBar: AppBar
+      (
         title: Text(widget.title),
       ),
-      body: Column(
-        children: <Widget>[],
+      body: Observer
+      (
+        builder:(_) => controller.isLoading
+        ? Center
+        (
+          child: CircularProgressIndicator(),
+        )
+        : GestureDetector
+        (
+          onTap: ()
+          {
+            FocusScope.of(context).requestFocus(FocusNode());
+          },
+          child: Column
+          (
+            children: <Widget>
+            [
+              Expanded
+              (
+                child: Center
+                (
+                  child: Align
+                  (
+                    alignment: Alignment.topLeft, 
+                    child: Observer 
+                    (
+                      builder:(_) => Text
+                      (
+                        "${controller.messages}"
+                      ),
+                    )
+                  ),
+                )
+              ),
+              TypingWidget()
+            ],
+          ),
+        ),
       ),
     );
   }
