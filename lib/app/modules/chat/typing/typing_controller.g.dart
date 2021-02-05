@@ -24,6 +24,23 @@ mixin _$TypingController on _TypingControllerBase, Store {
     });
   }
 
+  final _$textEditingControllerAtom =
+      Atom(name: '_TypingControllerBase.textEditingController');
+
+  @override
+  TextEditingController get textEditingController {
+    _$textEditingControllerAtom.reportRead();
+    return super.textEditingController;
+  }
+
+  @override
+  set textEditingController(TextEditingController value) {
+    _$textEditingControllerAtom.reportWrite(value, super.textEditingController,
+        () {
+      super.textEditingController = value;
+    });
+  }
+
   final _$_TypingControllerBaseActionController =
       ActionController(name: '_TypingControllerBase');
 
@@ -41,7 +58,8 @@ mixin _$TypingController on _TypingControllerBase, Store {
   @override
   String toString() {
     return '''
-messenger: ${messenger}
+messenger: ${messenger},
+textEditingController: ${textEditingController}
     ''';
   }
 }
