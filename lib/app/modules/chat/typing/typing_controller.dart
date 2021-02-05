@@ -1,4 +1,5 @@
 import 'package:backendless_sdk/backendless_sdk.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
@@ -11,6 +12,9 @@ abstract class _TypingControllerBase with Store {
   
   @observable
   String messenger;
+
+  @observable
+  TextEditingController textEditingController ;
   
   @action
   sendMessenger()
@@ -21,6 +25,7 @@ abstract class _TypingControllerBase with Store {
       channelName: "myChannel", 
       publishOptions: PublishOptions()
       ..headers = {"name":"Hiếu"}
+      ..publisherId = "1"
     );
   }
 }

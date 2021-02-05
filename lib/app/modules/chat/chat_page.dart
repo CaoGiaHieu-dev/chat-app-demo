@@ -44,18 +44,31 @@ class _ChatPageState extends ModularState<ChatPage, ChatController> {
             [
               Expanded
               (
-                child: Center
+                child: SingleChildScrollView
                 (
-                  child: Align
+                  child: Column
                   (
-                    alignment: Alignment.topLeft, 
-                    child: Observer 
-                    (
-                      builder:(_) => Text
+                    children: <Widget>
+                    [
+                      Center
                       (
-                        "${controller.messages}"
+                        child: Align
+                        (
+                          alignment: Alignment.topLeft, 
+                          child: Observer 
+                          (
+                            builder:(_) => Text
+                            (
+                              "${controller.messages}",
+                              style: TextStyle
+                              (
+                                fontSize: 25
+                              ),
+                            ),
+                          )
+                        ),
                       ),
-                    )
+                    ],
                   ),
                 )
               ),

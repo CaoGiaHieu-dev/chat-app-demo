@@ -1,5 +1,6 @@
 import 'package:chat_app/app/modules/chat/typing/typing_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class TypingWidget extends StatefulWidget 
@@ -29,16 +30,20 @@ class _TypingWidgetState extends ModularState<TypingWidget,TypingController> {
           ),
           Expanded
           (
-            child: TextField
+            child: Observer
             (
-              textCapitalization: TextCapitalization.sentences,
-              onChanged: (value) 
-              {
-                controller.messenger = value;
-              },
-              decoration: InputDecoration
+              builder:(_) => TextField
               (
-                hintText: 'Send a message..'
+                controller: controller.textEditingController,
+                textCapitalization: TextCapitalization.sentences,
+                onChanged: (value) 
+                {
+                  controller.messenger = value;
+                },
+                decoration: InputDecoration
+                (
+                  hintText: 'Send a message..',
+                ),
               ),
             ),
           ),
@@ -50,7 +55,9 @@ class _TypingWidgetState extends ModularState<TypingWidget,TypingController> {
             onPressed: () 
             {
               controller.sendMessenger();
-            },
+              // FocusScope.of(context).unfocus();
+              controller.textEditingController =TextEditingController()..text = '';
+            }
           ),
        ],
      ),
